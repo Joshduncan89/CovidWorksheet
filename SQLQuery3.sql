@@ -3,22 +3,22 @@ select * from db2..CovidDeaths$
 select * from db2..CovidVaccinations$
 
 --Select Data for graph
-select location,date,total_cases,new_cases,total_Deaths,population
-from db2..coviddeaths$
-order by 1,2
+SELECT location,date,total_cases,new_cases,total_Deaths,population
+FROM db2..coviddeaths$
+ORDER BY 1,2
 
 
 
 --Total Cases vs Total Deaths
-select location,date,total_cases,new_cases,total_Deaths,(total_cases/total_deaths)*100 as Lethality ,population
-from db2..coviddeaths$
-order by 1,2
+SELECT location,date,total_cases,new_cases,total_Deaths,(total_cases/total_deaths)*100 as Lethality ,population
+FROM db2..coviddeaths$
+ORDER BY 1,2
 
 --Percentage of Pop Infected
-select location,population,MAX(total_cases) as Total_Cases, MAX((total_cases/population))*100 as Pop_Perc_Inf
-from db2..coviddeaths$
+SELECT location,population,MAX(total_cases) as Total_Cases, MAX((total_cases/population))*100 as Pop_Perc_Inf
+FROM db2..coviddeaths$
 GROUP BY location,population
-order by 1,2
+ORDER BY 1,2
 
 
 
